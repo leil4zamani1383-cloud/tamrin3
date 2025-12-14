@@ -1,0 +1,29 @@
+.primary {
+  background-color: rgb(118, 118, 230);
+  color: white;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+  border: none;
+  margin: 0.1em;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th {
+    background-color: rgb(117, 117, 117);
+    color: white;
+    text-align: right;
+  }
+  th,td{
+    padding: 0.2em;
+  }
+  th {
+    border-top: 1px solid rgb(102, 100, 100);
+  }
+  tr {
+    border-bottom: 1px solid rgb(102, 100, 100);
+  }
+  tr:ntn-of-type(2n+1) {
+    background-color: rgb(102, 100, 100);
+  }
+}

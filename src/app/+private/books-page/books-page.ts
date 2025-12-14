@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './books-page.scss',
 })
 export class BooksPage {
+data:BooksItem[]=[
+  {id:1,title:"c++",writer:"خودم",publisher:"خودش",price:8000}
+]
+}
+export interface BooksItem{
+  id:number;
+  title:string;
+  writer:string;
+  publisher:string;
+  price?:number;
 
 }

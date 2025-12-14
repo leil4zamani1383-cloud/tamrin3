@@ -5,14 +5,14 @@ import { MembersPage } from './+private/members-page/members-page';
 import { Borrowspage } from './+private/borrowspage/borrowspage';
 import { ReportsPage } from './+private/reports-page/reports-page';
 import { DashboardPage } from './+private/dashboard-page/dashboard-page';
+import { BooksPage } from './+private/books-page/books-page';
+import { privateGuard } from './+shered/private-guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPage },
   {
-    path: 'private',
-    component: PrivateTemplat,
-    children: [
-      { path: 'books', component: LoginPage },
+    path: 'private',canActivate:[privateGuard],component: PrivateTemplat,children: [
+      { path: 'books', component: BooksPage },
       { path: 'members', component: MembersPage },
       { path: 'borrows', component: Borrowspage },
       { path: 'reports', component: ReportsPage },

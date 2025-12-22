@@ -1,1 +1,69 @@
-<p>members-page works!</p>
+@if (state=='list') {
+<button (click)="add()" class="primary">افزودن</button>
+<table>
+  <thead>
+    <tr>
+      <th>شناسه</th>
+      <th>نام</th>
+      <th>نام خانوادگی</th>
+      <th>شماره تلفن</th>
+      <th>کد ملی</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(item of data; track $index) {
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.Firstname }}</td>
+      <td>{{ item.lastname }}</td>
+      <td>{{ item.Phonenumber }}</td>
+      <td>{{ item.Nationalcode }}</td>
+      <td></td>
+      <td>
+        <button class="primary">ویرایش</button>
+        <button class="primary">حذف</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {
+<form (ngSubmit)="save()">
+  <div>
+    <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه" />
+    <input
+      [(ngModel)]="item.Firstname"
+      id="Firstname"
+      name="Firstname"
+      type="text"
+      placeholder="نام"
+    />
+    <input
+      [(ngModel)]="item.lastname"
+      id="lastname"
+      name="lastname"
+      type="text"
+      placeholder="نام خانوادگی"
+    />
+    <input
+      [(ngModel)]="item.Phonenumber"
+      id="Phonenumber"
+      name="Phonenumber"
+      type="number"
+      placeholder="شماره تلفن"
+    />
+    <input
+      [(ngModel)]="item.Phonenumber"
+      id="Nationalcode"
+      name="Nationalcode"
+      type="number"
+      placeholder="کد ملی"
+    />
+  </div>
+  <div>
+    <button class="primary" type="submit">تایید</button>
+    <button (click)="cancel()" class="primary" type="button">انصراف</button>
+  </div>
+</form>
+}

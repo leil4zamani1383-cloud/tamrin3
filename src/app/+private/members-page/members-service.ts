@@ -48,4 +48,14 @@ export class MembersService {
   add(item: MemberItem) {
     this.data.push(item);
   }
-}
+   edit(item:MemberItem)  {
+         const Index= this.data.findIndex(b=>b.id==item.id);
+    if(Index!=-1){
+this.data[Index].id=item.id;
+this.data[Index].Firstname=item.Firstname;
+this.data[Index].lastname=item.lastname;
+this.data[Index].Phonenumber=item.Phonenumber;
+this.data[Index].Nationalcode=item.Nationalcode;
+
+    }
+}}

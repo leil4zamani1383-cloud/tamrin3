@@ -18,4 +18,14 @@ export class BooksService {
     add(item:BooksItem){
   this.data.push(item);
     }
+  edit(item:BooksItem)  {
+    const Index= this.data.findIndex(b=>b.id==item.id);
+    if(Index!=-1){
+this.data[Index].title=item.title;
+this.data[Index].writer=item.writer;
+this.data[Index].publisher=item.publisher;
+this.data[Index].price=item.price;
+
+    }
+  }
 }

@@ -10,9 +10,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class MembersPage implements OnInit {
   save() {
-    this.memberService.add(this.item);
-    this.dataRefresh();
-    this.state = 'list';
+     if(this.state=='add'){
+       this.memberService.add(this.item);
+      ;
+      }
+          else if(this.state=='edit'){
+             this.memberService.edit(this.item);
+          }
+ this.dataRefresh();
+       this.state = 'list'
   }
   ngOnInit(): void {
     this.dataRefresh();
@@ -36,6 +42,10 @@ export class MembersPage implements OnInit {
     lastname: '',
    
     }
+  }
+  edit(member:MemberItem){
+this.item={...member};
+    this.state='edit';
   }
   cancel() {
     this.state ='list';

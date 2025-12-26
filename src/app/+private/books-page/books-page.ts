@@ -10,10 +10,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class BooksPage implements OnInit {
   save() {
-       this.booksServisce.add(this.item);
-   this.dataRefresh();
-   this.state='list';
-     
+    if(this.state=='add'){
+      this.booksServisce.add(this.item);
+    
+    }
+    else if(this.state=='edit'){
+      this.booksServisce.edit(this.item);
+    }
+  this.dataRefresh();
+      this.state='list';
   }
   ngOnInit(): void {
     this.dataRefresh();
@@ -37,7 +42,11 @@ export class BooksPage implements OnInit {
     publisher:''
     };
   }
-  
+  edit(book:BooksItem){
+    this.item={...book};
+    this.state='edit';
+
+  }
   cancel(){
     this.state='list';
   }

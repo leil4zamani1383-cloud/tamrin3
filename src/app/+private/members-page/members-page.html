@@ -21,7 +21,7 @@
       <td>{{ item.Nationalcode }}</td>
       <td></td>
       <td>
-        <button class="primary">ویرایش</button>
+        <button (click)="edit(item)" class="primary">ویرایش</button>
         <button class="primary">حذف</button>
       </td>
     </tr>
@@ -31,34 +31,51 @@
 } @else {
 <form (ngSubmit)="save()">
   <div>
-    <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه" />
     <input
-      [(ngModel)]="item.Firstname"
-      id="Firstname"
-      name="Firstname"
-      type="text"
-      placeholder="نام"
-    />
-    <input
-      [(ngModel)]="item.lastname"
-      id="lastname"
-      name="lastname"
-      type="text"
-      placeholder="نام خانوادگی"
-    />
-    <input
-      [(ngModel)]="item.Phonenumber"
-      id="Phonenumber"
-      name="Phonenumber"
+     [class.ghofl]="state=='edit'"
+      [disabled]="state=='edit'"
+      [(ngModel)]="item.id"
+      id="id"
+      name="id"
       type="number"
-      placeholder="شماره تلفن"
+      placeholder="شناسه"
     />
+    </div>
+  <div>
     <input
-      [(ngModel)]="item.Phonenumber"
-      id="Nationalcode"
-      name="Nationalcode"
-      type="number"
-      placeholder="کد ملی"
+    [(ngModel)]="item.Firstname"
+    id="Firstname"
+    name="Firstname"
+    type="text"
+    placeholder="نام"
+    />
+  </div>
+  <div>
+    <input
+    [(ngModel)]="item.lastname"
+    id="lastname"
+    name="lastname"
+    type="text"
+    placeholder="نام خانوادگی"
+    />
+  </div>
+  <div>
+    <input
+    [(ngModel)]="item.Phonenumber"
+    id="Phonenumber"
+    name="Phonenumber"
+    type="number"
+    placeholder="شماره تلفن"
+    />
+  </div>
+  <div>
+
+    <input
+    [(ngModel)]="item.Phonenumber"
+    id="Nationalcode"
+    name="Nationalcode"
+    type="number"
+    placeholder="کد ملی"
     />
   </div>
   <div>

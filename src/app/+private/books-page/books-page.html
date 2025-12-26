@@ -20,19 +20,26 @@
       <td>{{ item.publisher }}</td>
       <td>{{ item.price }}</td>
       <td>
-        <button class="primary">ویرایش</button>
+        <button (click)="edit(item)" class="primary">ویرایش</button>
         <button class="primary">حذف</button>
       </td>
     </tr>
     }
   </tbody>
 </table>
-}
- @else {
+} @else {
 <form (ngSubmit)="save()">
-  <div>
-    <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه" />
-  </div>
+    <div>
+      <input
+      [class.ghofl]="state=='edit'"
+      [disabled]="state=='edit'"
+      [(ngModel)]="item.id"
+      id="id"
+      name="id"
+      type="number"
+      placeholder="شناسه"
+      />
+    </div>
   <div>
     <input [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان " />
   </div>

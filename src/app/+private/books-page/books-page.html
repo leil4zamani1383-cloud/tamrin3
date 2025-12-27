@@ -21,33 +21,48 @@
       <td>{{ item.price }}</td>
       <td>
         <button (click)="edit(item)" class="primary">ویرایش</button>
-        <button class="primary">حذف</button>
+        <button (click)="remove(item)" class="primary">حذف</button>
       </td>
     </tr>
     }
   </tbody>
 </table>
-} @else {
+}
+ @else {
+  @if (state=='remove') {
+    <div class="alert">
+    آیا از حذف این کتاب اطمینان دارید؟
+  </div>
+}
 <form (ngSubmit)="save()">
-    <div>
-      <input
-      [class.ghofl]="state=='edit'"
-      [disabled]="state=='edit'"
+  <div>
+    <input
+      [disabled]="state == 'edit' || state == 'remove'"
+      [class.ghofl]="state == 'edit'"
+      [disabled]="state == 'edit'"
       [(ngModel)]="item.id"
       id="id"
       name="id"
       type="number"
       placeholder="شناسه"
-      />
-    </div>
-  <div>
-    <input [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان " />
-  </div>
-  <div>
-    <input [(ngModel)]="item.writer" id="id" name="id" type="text" placeholder="نویسنده" />
+    />
   </div>
   <div>
     <input
+      [disabled]="state == 'remove'"
+      [(ngModel)]="item.title"
+      id="title"
+      name="title"
+      type="text"
+      placeholder="عنوان "
+    />
+  </div>
+  <div>
+    <input  [disabled]="state == 'remove'" [(ngModel)]="item.writer" id="id" name="id" type="text" placeholder="نویسنده" />
+  </div>
+  <div>
+    <input
+     [disabled]="state == 'remove'"
       [(ngModel)]="item.publisher"
       id="publisher"
       name="publisher"
@@ -56,7 +71,7 @@
     />
   </div>
   <div>
-    <input [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت" />
+    <input  [disabled]="state == 'remove'" [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت" />
   </div>
   <div>
     <button class="primary" type="submit">تایید</button>

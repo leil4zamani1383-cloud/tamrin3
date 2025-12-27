@@ -28,4 +28,8 @@ this.data[Index].price=item.price;
 
     }
   }
-}
+    remove(item:BooksItem)  {
+ this.data=this.data.filter(b=>b.id!=item.id);
+    }
+  }
+

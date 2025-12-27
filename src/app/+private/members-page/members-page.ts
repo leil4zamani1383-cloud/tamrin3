@@ -16,6 +16,8 @@ export class MembersPage implements OnInit {
       }
           else if(this.state=='edit'){
              this.memberService.edit(this.item);
+          }   else if(this.state=='remove'){
+             this.memberService.remove(this.item);
           }
  this.dataRefresh();
        this.state = 'list'
@@ -47,6 +49,10 @@ export class MembersPage implements OnInit {
 this.item={...member};
     this.state='edit';
   }
+    remove(member:MemberItem){
+         this.item={...member};
+      this.state='remove';
+    }
   cancel() {
     this.state ='list';
   }

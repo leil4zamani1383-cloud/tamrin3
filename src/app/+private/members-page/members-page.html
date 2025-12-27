@@ -22,16 +22,23 @@
       <td></td>
       <td>
         <button (click)="edit(item)" class="primary">ویرایش</button>
-        <button class="primary">حذف</button>
+        <button   (click)="remove(item)" class="primary">حذف</button>
       </td>
     </tr>
     }
   </tbody>
 </table>
-} @else {
+} 
+@else {
+  @if (state=='remove') {
+    <div class="alert">
+    آیا از حذف این کتاب اطمینان دارید؟
+  </div>
+}
 <form (ngSubmit)="save()">
   <div>
     <input
+     [disabled]="state == 'edit' || state == 'remove'"
      [class.ghofl]="state=='edit'"
       [disabled]="state=='edit'"
       [(ngModel)]="item.id"
@@ -43,6 +50,7 @@
     </div>
   <div>
     <input
+     [disabled]="state == 'remove'"
     [(ngModel)]="item.Firstname"
     id="Firstname"
     name="Firstname"
@@ -52,6 +60,7 @@
   </div>
   <div>
     <input
+         [disabled]="state == 'remove'"
     [(ngModel)]="item.lastname"
     id="lastname"
     name="lastname"
@@ -61,6 +70,7 @@
   </div>
   <div>
     <input
+         [disabled]="state == 'remove'"
     [(ngModel)]="item.Phonenumber"
     id="Phonenumber"
     name="Phonenumber"
@@ -71,6 +81,7 @@
   <div>
 
     <input
+         [disabled]="state == 'remove'"
     [(ngModel)]="item.Phonenumber"
     id="Nationalcode"
     name="Nationalcode"

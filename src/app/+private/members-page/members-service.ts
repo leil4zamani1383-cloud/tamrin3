@@ -58,4 +58,8 @@ this.data[Index].Phonenumber=item.Phonenumber;
 this.data[Index].Nationalcode=item.Nationalcode;
 
     }
-}}
+}
+    remove(item:MemberItem)  {
+ this.data=this.data.filter(b=>b.id!=item.id);
+    }
+  }
